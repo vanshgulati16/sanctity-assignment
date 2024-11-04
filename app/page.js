@@ -1,101 +1,87 @@
-import Image from "next/image";
+'use client'
+import { useRef, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Image from 'next/image'
+import Lenis from 'lenis'
+import HeroSection from '@/components/HeroSection'
+import DifferenceSection from '@/components/DifferenceSection'
+import StatsSection from '@/components/StatsSection'
+import HorizontalScrollCarousel from '@/components/card'
+import Accordion from '@/components/AccordionSection'
+import TestimonialSection from '@/components/TestimonialSection'
+import Resources from '@/components/Resources'
+import ContactUs from '@/components/ContactUs'
+import TrustUs from '@/components/TrustUs'
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.config({ trialWarn: false })
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const targetRef = useRef(null)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    lenis.on('scroll', (e) => {
+      console.log(e)
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }, [])
+
+  return (
+    <main className="min-h-screen px-4 md:px-20" ref={targetRef}>
+      {/* Navigation */}
+      <nav className="relative sticky top-0 w-full z-50 px-8 py-6 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <svg width="120" height="32" viewBox="0 0 116 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M104.633 4.13428H111.165L115.297 0H108.77L104.633 4.13428ZM98.6719 8.34644H92.1396L96.2764 4.20728H102.804L98.6719 8.34644ZM99.3818 9.15967V15.6946L103.515 11.5554V5.02539L99.3818 9.15967ZM111.866 4.95264V11.4827L115.999 7.34839V0.818359L111.866 4.95264ZM100.28 16.7612H106.812L110.945 12.627H104.418L100.28 16.7612ZM107.518 17.5793V24.1094L111.649 19.9751V13.4451L107.518 17.5793ZM71.6475 18.4016C72.1289 17.9731 72.3721 17.384 72.3721 16.634C72.3721 15.8843 72.1289 15.2949 71.6475 14.8665C71.165 14.438 70.5957 14.2236 69.9385 14.2236C69.2812 14.2236 68.7119 14.438 68.2305 14.8665C67.748 15.2998 67.5049 15.8843 67.5049 16.634C67.5049 17.384 67.748 17.9731 68.2305 18.4016C68.7119 18.8303 69.2812 19.0444 69.9385 19.0444C70.5957 19.0444 71.165 18.8303 71.6475 18.4016Z" fill="#97D28B"></path>
+          </svg>
+          <Image src="/logo.svg" alt="Addifico" width={120} height={32} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        <div className="flex items-center gap-8">
+          <button className="p-3 rounded-full bg-addifico-dark/30 backdrop-blur-sm">
+            <span className="w-6 h-6 text-white">☰</span>
+          </button>
+          <button className="px-6 py-3 rounded-full bg-addifico-green text-addifico-dark font-helvetica">
+            Get in touch
+          </button>
+        </div>
+      </nav>
+      {/* Hero section   */}
+      <HeroSection />
+      {/* Difference section */}
+      <DifferenceSection />
+      {/* Horizontal scroll carousel */}
+      <HorizontalScrollCarousel />
+      {/* Stats section */}
+      <StatsSection />
+      {/* Accordion section */}
+      <section className="min-h-screen flex flex-col justify-center md:px-20 py-20">
+        <div className="flex flex-row gap-8 px-24">
+          <Accordion />
+        </div>  
+      </section>
+      {/* Trust us section */}
+      <TrustUs />
+
+      <section className="h-screen flex flex-col justify-center items-center px-4 md:px-20 py-20">
+        <TestimonialSection />
+      </section>
+      {/* Resources section */}
+      <section className="min-h-screen flex flex-col justify-center items-center py-20">
+        <Resources />
+      </section>
+      {/* Contact us section */}
+      <section className="min-h-screen flex flex-col justify-center items-center py-20">
+        <ContactUs />
+      </section>
+    </main>
+  )
 }
