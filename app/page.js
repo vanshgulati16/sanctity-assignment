@@ -34,7 +34,7 @@ export default function Home() {
 
     requestAnimationFrame(raf)
   }, [])
-
+  
   return (
     <main className="min-h-screen px-4 md:px-20" ref={targetRef}>
       {/* Navigation */}
