@@ -80,10 +80,10 @@ export default function TestimonialSection() {
   }, [activeFilter])
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 max-w-7xl mx-auto px-4 py-8">
+    <div className="flex flex-col md:flex-row gap-12 max-w-7xl mx-auto px-4 py-8 overflow-x-hidden">
       {/* Title and Platform Toggle Section */}
       <div className="w-full md:w-1/3 md:sticky md:top-8 md:self-start">
-        <h2 className="text-4xl md:text-6xl text-addifico-green font-helvetica font-bold md:pr-24">
+        <h2 className="text-3xl md:text-6xl text-addifico-green font-helvetica font-bold md:pr-24">
           Hear it from our clients
         </h2>
         
@@ -91,7 +91,7 @@ export default function TestimonialSection() {
         <div className="mt-8 inline-flex p-1 bg-addifico-green/10 rounded-full">
           <button
             onClick={() => setActiveFilter('fiverr')}
-            className={`px-4 md:px-6 py-2 rounded-full transition-all duration-300 text-sm md:text-base ${
+            className={`px-3 md:px-6 py-2 rounded-full transition-all duration-300 text-sm md:text-base ${
               activeFilter === 'fiverr'
                 ? 'bg-addifico-green text-white'
                 : 'text-addifico-green hover:bg-addifico-green/10'
@@ -101,7 +101,7 @@ export default function TestimonialSection() {
           </button>
           <button
             onClick={() => setActiveFilter('upwork')}
-            className={`px-4 md:px-6 py-2 rounded-full transition-all duration-300 text-sm md:text-base ${
+            className={`px-3 md:px-6 py-2 rounded-full transition-all duration-300 text-sm md:text-base ${
               activeFilter === 'upwork'
                 ? 'bg-addifico-green text-white'
                 : 'text-addifico-green hover:bg-addifico-green/10'
@@ -115,11 +115,11 @@ export default function TestimonialSection() {
       {/* Testimonials Container */}
       <div className="w-full md:w-2/3">
         {/* Container with Navigation and Cards */}
-        <div className="flex items-center justify-center gap-4 md:gap-16 w-full">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-16 w-full">
           {/* Left Navigation Button */}
           <button
             onClick={handlePrev}
-            className={`flex-shrink-0 p-3 md:p-4 rounded-full transition-colors
+            className={`flex-shrink-0 p-2 md:p-4 rounded-full transition-colors z-10
               ${currentIndex === 0 
                 ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed' 
                 : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
@@ -127,8 +127,8 @@ export default function TestimonialSection() {
             disabled={currentIndex === 0}
           >
             <svg 
-              width="20" 
-              height="20" 
+              width="16" 
+              height="16" 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 
@@ -138,8 +138,8 @@ export default function TestimonialSection() {
             </svg>
           </button>
 
-          {/* Stacked Cards Container */}
-          <div className="relative h-[400px] md:h-[500px] w-full">
+          {/* Updated Stacked Cards Container with better tablet sizing */}
+          <div className="relative h-[450px] sm:h-[500px] md:h-[500px] w-full sm:w-[calc(100vw-8rem)] md:w-full">
             {filteredTestimonials.map((testimonial, index) => {
               const isActive = index === currentIndex
               const offset = (index - currentIndex)
@@ -160,26 +160,26 @@ export default function TestimonialSection() {
                           ? offset * -8
                           : 0,
                     x: isNext 
-                        ? offset * -12
+                        ? offset * -8
                         : isPrev 
-                          ? offset * -12
+                          ? offset * -8
                           : 0,
                     rotateZ: isNext 
-                             ? offset * 1.5
+                             ? offset * 1
                              : isPrev 
-                               ? offset * -1.5
+                               ? offset * -1
                                : 0,
                     rotateX: isNext 
-                             ? -2
+                             ? -1
                              : isPrev 
-                               ? -2
+                               ? -1
                                : 0,
                   }}
                   transition={{
                     duration: 0.4,
                     ease: [0.4, 0.0, 0.2, 1],
                   }}
-                  className={`absolute inset-0 bg-white rounded-3xl p-6 md:p-10 
+                  className={`absolute inset-0 bg-white rounded-3xl p-6 sm:p-8 md:p-10
                              ${isActive ? 'shadow-2xl' : 'shadow-lg'}`}
                   style={{
                     backfaceVisibility: 'hidden',
@@ -189,10 +189,10 @@ export default function TestimonialSection() {
                   }}
                 >
                   <div className="h-full flex flex-col justify-between">
-                    {/* Quote Icon */}
-                    <div className="mb-4 md:mb-6">
+                    {/* Quote Icon - Reduced size for tablet */}
+                    <div className="mb-2 sm:mb-4 md:mb-6 flex-shrink-0">
                       <svg 
-                        className="w-8 h-8 md:w-10 md:h-10 text-addifico-green/20"
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-addifico-green/20"
                         fill="currentColor" 
                         viewBox="0 0 24 24"
                       >
@@ -200,42 +200,27 @@ export default function TestimonialSection() {
                       </svg>
                     </div>
 
-                    {/* Testimonial Text */}
-                    <p className="text-lg md:text-2xl text-addifico-dark mb-auto font-helvetica leading-relaxed">
+                    {/* Testimonial Text - Adjusted size and line clamp for tablet */}
+                    <p className="text-sm sm:text-lg md:text-2xl text-addifico-dark font-helvetica leading-relaxed line-clamp-4 sm:line-clamp-4 md:line-clamp-5">
                       "{testimonial.text}"
                     </p>
 
-                    {/* Author Info with Image */}
-                    <div className="border-t border-gray-200 pt-4 md:pt-6 mt-4 md:mt-8">
-                      <div className="flex items-center gap-3 md:gap-4">
-                        {/* Author Image */}
-                        <div className="flex-shrink-0">
-                          <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden bg-addifico-green/10">
-                            {testimonial.image ? (
-                              <img 
-                                src={testimonial.image} 
-                                alt={testimonial.author}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center">
-                                <span className="text-2xl text-addifico-green">
-                                  {testimonial.author[0]}
-                                </span>
-                              </div>
-                            )}
-                          </div>
+                    {/* Author Info - Reduced spacing for tablet */}
+                    <div className="border-t border-gray-200 pt-4 sm:pt-4 md:pt-6 mt-4 sm:mt-4 md:mt-6 flex-shrink-0">
+                      <div className="flex items-center gap-3 sm:gap-3 md:gap-4">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full bg-addifico-green/10 flex items-center justify-center flex-shrink-0">
+                          <span className="text-lg sm:text-xl md:text-2xl text-addifico-green">
+                            {testimonial.author[0]}
+                          </span>
                         </div>
-
-                        {/* Author Details */}
                         <div>
-                          <div className="text-addifico-green font-bold text-base md:text-xl">
+                          <div className="text-addifico-green font-bold text-sm sm:text-base md:text-xl">
                             {testimonial.author}
                           </div>
-                          <div className="text-sm md:text-base text-gray-600">
+                          <div className="text-xs sm:text-sm md:text-base text-gray-600">
                             {testimonial.position}
                           </div>
-                          <div className="text-sm md:text-base text-gray-600">
+                          <div className="text-xs sm:text-sm md:text-base text-gray-600">
                             {testimonial.company}
                           </div>
                         </div>
@@ -250,7 +235,7 @@ export default function TestimonialSection() {
           {/* Right Navigation Button */}
           <button
             onClick={handleNext}
-            className={`flex-shrink-0 p-3 md:p-4 rounded-full transition-colors
+            className={`flex-shrink-0 p-2 md:p-4 rounded-full transition-colors z-10
               ${currentIndex === filteredTestimonials.length - 1
                 ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed'
                 : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
@@ -258,8 +243,8 @@ export default function TestimonialSection() {
             disabled={currentIndex === filteredTestimonials.length - 1}
           >
             <svg 
-              width="20" 
-              height="20" 
+              width="16" 
+              height="16" 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 

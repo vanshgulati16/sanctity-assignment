@@ -35,13 +35,26 @@ const HorizontalScrollCarousel = () => {
       target: targetRef,
     });
   
-    const x = useTransform(scrollYProgress, [0, 1], ["100%", "-95%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["70%", "-95%"]);
   
     return (
-      <section ref={targetRef} className="relative h-[300vh] px-4 md:px-20">
-        <div className="sticky top-0 flex h-screen items-start overflow-hidden pt-20">
+      <section ref={targetRef} className="relative md:h-[300vh] px-4 md:px-20">
+        {/* Mobile View (Vertical Layout) */}
+        <div className="md:hidden py-20">
+          <h2 className="text-5xl text-[#a6e3a1] font-helvetica font-bold mb-8">
+            Services
+          </h2>
+          <div className="flex flex-col gap-6">
+            {services.map((service) => (
+              <Card card={service} key={service.id} />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop View (Horizontal Scroll) */}
+        <div className="hidden md:block sticky top-0 h-screen items-start overflow-hidden pt-20">
           <div className="flex flex-col w-full">
-            <h2 className="text-6xl md:text-8xl text-[#a6e3a1] font-helvetica font-bold px-4 md:px-20 mt-8 mb-4">
+            <h2 className="text-8xl text-[#a6e3a1] font-helvetica font-bold px-20 mt-8 mb-4">
               Services
             </h2>
             <div className="flex items-center overflow-hidden pl-10">
@@ -61,7 +74,7 @@ const HorizontalScrollCarousel = () => {
     return (
       <div
         key={card.id}
-        className="group relative h-[300px] w-[300px] overflow-hidden bg-[#1a2b23] rounded-lg transition-transform duration-300"
+        className="group relative h-[300px] w-full md:w-[300px] overflow-hidden bg-[#1a2b23] rounded-lg transition-transform duration-300"
       >
         <div className="absolute inset-0 z-10 grid place-content-center px-6">
           <div className="text-6xl text-[#a6e3a1] transition-colors duration-300 relative z-20">

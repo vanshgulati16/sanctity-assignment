@@ -25,7 +25,8 @@ export default function DifferenceSection() {
       xPercent: 0,
       zIndex: 50,
       opacity: 0,
-      width: (heroDifferenceRect?.right || 0) - (heroMakeARect?.left || 0)
+      flexDirection: 'column',
+      alignItems: 'flex-start'
     })
 
     // Create ScrollTrigger
@@ -119,26 +120,39 @@ export default function DifferenceSection() {
     >
       <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-addifico-green/20 blur-[120px] rounded-full" />
       <div className="md:w-1/2">
-        <h2 
+        <div 
           ref={titleRef}
-          className="text-5xl md:text-7xl font-bold text-addifico-green whitespace-nowrap"
+          className="flex flex-col gap-2"
         >
-          Make a Difference
-        </h2>
+          <div className="text-5xl md:text-7xl font-extrabold text-addifico-green whitespace-nowrap">
+            Make a
+          </div>
+          <div className="text-5xl md:text-7xl font-extrabold text-addifico-green whitespace-nowrap">
+            Difference
+          </div>
+        </div>
       </div>
       <div className="h-[1px] w-full bg-addifico-green/20 mt-4"></div>
       
       {/* Content */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-20 items-center mt-20">
-        <div className="pb-24">
-          <div className="text-gray-400 text-xl font-helvetica">
+      <div className="relative z-10 mt-20">
+        {/* Why we exist? text */}
+        <div className="mb-12">
+          <div className="text-gray-400 text-xl font-helvetica font-semibold">
             Why we exist? 
           </div>
         </div>
-        <div className="space-y-6">
-          <p className="text-2xl md:text-4xl font-helvetica reveal-type text-[#dcefd3]">
-            At Addifico Consulting, we use human creativity and the latest technologies to help business leaders, investors, and entrepreneurs enhance their market positioning, discover the next winning trend, and optimize their chances for success.
-          </p>
+
+        {/* Main content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+          <div>
+            {/* Left column empty */}
+          </div>
+          <div className="space-y-6">
+            <p className="text-2xl md:text-4xl font-helvetica reveal-type text-[#dcefd3] font-semibold whitespace-pre-line">
+              At Addifico Consulting, we use human creativity and the latest technologies to help business leaders, investors, and entrepreneurs enhance their market positioning, discover the next winning trend, and optimize their chances for success.
+            </p>
+          </div>
         </div>
       </div>
     </section>
