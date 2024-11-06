@@ -80,10 +80,10 @@ export default function TestimonialSection() {
   }, [activeFilter])
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 max-w-7xl mx-auto px-4 py-8 overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto px-4 py-8 overflow-x-hidden">
       {/* Title and Platform Toggle Section */}
-      <div className="w-full md:w-1/3 md:sticky md:top-8 md:self-start">
-        <h2 className="text-3xl md:text-6xl text-addifico-green font-helvetica font-bold md:pr-24">
+      <div className="w-full lg:w-1/3 lg:sticky lg:top-8 lg:self-start">
+        <h2 className="text-3xl lg:text-6xl text-addifico-green font-helvetica font-bold lg:pr-24">
           Hear it from our clients
         </h2>
         
@@ -113,146 +113,119 @@ export default function TestimonialSection() {
       </div>
 
       {/* Testimonials Container */}
-      <div className="w-full md:w-2/3">
-        {/* Container with Navigation and Cards */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-16 w-full">
-          {/* Left Navigation Button */}
-          <button
-            onClick={handlePrev}
-            className={`flex-shrink-0 p-2 md:p-4 rounded-full transition-colors z-10
-              ${currentIndex === 0 
-                ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed' 
-                : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
-              }`}
-            disabled={currentIndex === 0}
-          >
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              className="text-inherit md:w-6 md:h-6"
+      <div className="w-full lg:w-2/3">
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Navigation and Cards Container */}
+          <div className="flex items-center justify-center gap-4 w-full">
+            {/* Left Navigation Button */}
+            <button
+              onClick={handlePrev}
+              className={`flex-shrink-0 p-2 lg:p-4 rounded-full transition-colors z-10
+                ${currentIndex === 0 
+                  ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed' 
+                  : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
+                }`}
+              disabled={currentIndex === 0}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                   className="text-inherit lg:w-6 lg:h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-          {/* Updated Stacked Cards Container with better tablet sizing */}
-          <div className="relative h-[450px] sm:h-[500px] md:h-[500px] w-full sm:w-[calc(100vw-8rem)] md:w-full">
-            {filteredTestimonials.map((testimonial, index) => {
-              const isActive = index === currentIndex
-              const offset = (index - currentIndex)
-              const isNext = offset > 0
-              const isPrev = offset < 0
-              
-              return (
-                <motion.div
-                  key={testimonial.id}
-                  initial={false}
-                  animate={{
-                    scale: isActive ? 1 : 0.98,
-                    opacity: isActive ? 1 : 0.7,
-                    zIndex: filteredTestimonials.length - Math.abs(offset),
-                    y: isNext 
-                        ? offset * -8
-                        : isPrev 
-                          ? offset * -8
-                          : 0,
-                    x: isNext 
-                        ? offset * -8
-                        : isPrev 
-                          ? offset * -8
-                          : 0,
-                    rotateZ: isNext 
-                             ? offset * 1
-                             : isPrev 
-                               ? offset * -1
-                               : 0,
-                    rotateX: isNext 
-                             ? -1
-                             : isPrev 
-                               ? -1
-                               : 0,
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: [0.4, 0.0, 0.2, 1],
-                  }}
-                  className={`absolute inset-0 bg-white rounded-3xl p-6 sm:p-8 md:p-10
-                             ${isActive ? 'shadow-2xl' : 'shadow-lg'}`}
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-                    transformStyle: 'preserve-3d',
-                    transformOrigin: 'bottom center',
-                  }}
-                >
-                  <div className="h-full flex flex-col justify-between">
-                    {/* Quote Icon - Reduced size for tablet */}
-                    <div className="mb-2 sm:mb-4 md:mb-6 flex-shrink-0">
-                      <svg 
-                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-addifico-green/20"
-                        fill="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
+            {/* Stacked Cards Container */}
+            <div className="relative h-[450px] w-full max-w-[400px]">
+              {filteredTestimonials.map((testimonial, index) => {
+                const isActive = index === currentIndex
+                const offset = (index - currentIndex)
+                const isNext = offset > 0
+                const isPrev = offset < 0
+                
+                return (
+                  <motion.div
+                    key={testimonial.id}
+                    initial={false}
+                    animate={{
+                      scale: isActive ? 1 : 0.98,
+                      opacity: isActive ? 1 : 0.7,
+                      zIndex: filteredTestimonials.length - Math.abs(offset),
+                      y: isNext ? offset * -8 : isPrev ? offset * -8 : 0,
+                      x: isNext ? offset * -8 : isPrev ? offset * -8 : 0,
+                      rotateZ: isNext ? offset * 1 : isPrev ? offset * -1 : 0,
+                      rotateX: isNext ? -1 : isPrev ? -1 : 0,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.4, 0.0, 0.2, 1],
+                    }}
+                    className="absolute inset-0 bg-white rounded-3xl p-6 lg:p-10"
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transformStyle: 'preserve-3d',
+                      transformOrigin: 'bottom center',
+                    }}
+                  >
+                    <div className="h-full flex flex-col justify-between">
+                      {/* Quote Icon */}
+                      <div className="mb-6 flex-shrink-0">
+                        <svg 
+                          className="w-10 h-10 text-addifico-green/20"
+                          fill="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                      </div>
 
-                    {/* Testimonial Text - Adjusted size and line clamp for tablet */}
-                    <p className="text-sm sm:text-lg md:text-2xl text-addifico-dark font-helvetica leading-relaxed line-clamp-4 sm:line-clamp-4 md:line-clamp-5">
-                      "{testimonial.text}"
-                    </p>
+                      {/* Testimonial Text */}
+                      <p className="text-lg lg:text-2xl text-addifico-dark font-helvetica leading-relaxed line-clamp-5">
+                        "{testimonial.text}"
+                      </p>
 
-                    {/* Author Info - Reduced spacing for tablet */}
-                    <div className="border-t border-gray-200 pt-4 sm:pt-4 md:pt-6 mt-4 sm:mt-4 md:mt-6 flex-shrink-0">
-                      <div className="flex items-center gap-3 sm:gap-3 md:gap-4">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full bg-addifico-green/10 flex items-center justify-center flex-shrink-0">
-                          <span className="text-lg sm:text-xl md:text-2xl text-addifico-green">
-                            {testimonial.author[0]}
-                          </span>
-                        </div>
-                        <div>
-                          <div className="text-addifico-green font-bold text-sm sm:text-base md:text-xl">
-                            {testimonial.author}
+                      {/* Author Info */}
+                      <div className="border-t border-gray-200 pt-6 mt-6 flex-shrink-0">
+                        <div className="flex items-center gap-4">
+                          <div className="w-14 h-14 rounded-full bg-addifico-green/10 flex items-center justify-center flex-shrink-0">
+                            <span className="text-2xl text-addifico-green">
+                              {testimonial.author[0]}
+                            </span>
                           </div>
-                          <div className="text-xs sm:text-sm md:text-base text-gray-600">
-                            {testimonial.position}
-                          </div>
-                          <div className="text-xs sm:text-sm md:text-base text-gray-600">
-                            {testimonial.company}
+                          <div>
+                            <div className="text-addifico-green font-bold text-xl">
+                              {testimonial.author}
+                            </div>
+                            <div className="text-base text-gray-600">
+                              {testimonial.position}
+                            </div>
+                            <div className="text-base text-gray-600">
+                              {testimonial.company}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
+                  </motion.div>
+                )
+              })}
+            </div>
 
-          {/* Right Navigation Button */}
-          <button
-            onClick={handleNext}
-            className={`flex-shrink-0 p-2 md:p-4 rounded-full transition-colors z-10
-              ${currentIndex === filteredTestimonials.length - 1
-                ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed'
-                : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
-              }`}
-            disabled={currentIndex === filteredTestimonials.length - 1}
-          >
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              className="text-inherit md:w-6 md:h-6"
+            {/* Right Navigation Button */}
+            <button
+              onClick={handleNext}
+              className={`flex-shrink-0 p-2 lg:p-4 rounded-full transition-colors z-10
+                ${currentIndex === filteredTestimonials.length - 1
+                  ? 'bg-addifico-green/5 text-addifico-green/30 cursor-not-allowed'
+                  : 'bg-addifico-green/10 hover:bg-addifico-green/20 text-addifico-green'
+                }`}
+              disabled={currentIndex === filteredTestimonials.length - 1}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                   className="text-inherit lg:w-6 lg:h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

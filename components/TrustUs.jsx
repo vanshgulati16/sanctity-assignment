@@ -6,30 +6,19 @@ import { useRef } from 'react'
 
 const companies = [
   { name: 'Microsoft', logo: '/logos/microsoft.svg' },
-  { name: 'Indeed', logo: '/logos/indeed.svg' },
   { name: 'Upwork', logo: '/logos/upwork.svg' },
-  { name: 'Fiverr', logo: '/logos/fiverr.svg' },
-  { name: 'Ansell', logo: '/logos/ansell.svg' },
-  { name: 'Tipalti', logo: '/logos/tipalti.svg' },
+  { name: 'Fiverr', logo: '/logos/fiverr-1.svg' },
+  { name: 'Ansell', logo: '/logos/ansell.png' },
+  { name: 'Tipalti', logo: '/logos/tripalti.png' },
   { name: 'Estrid', logo: '/logos/estrid.svg' },
-  { name: 'Imaginario', logo: '/logos/imaginario.svg' },
-  { name: 'Presidio', logo: '/logos/presidio.svg' },
+  { name: 'Imaginario', logo: '/logos/imaginario.png' },
+  { name: 'Presidio', logo: '/logos/presidio.png' },
   { name: 'Wedo', logo: '/logos/wedo.svg' },
 ]
-
-const shuffleArray = (array) => {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
 
 export default function TrustUs() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const shuffledCompanies = shuffleArray(companies)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -45,12 +34,10 @@ export default function TrustUs() {
   const itemVariants = {
     hidden: { 
       opacity: 0,
-      y: 20,
-      scale: 0.95
+      scale: 0.5
     },
     show: { 
       opacity: 1,
-      y: 0,
       scale: 1,
       transition: {
         type: "spring",
@@ -83,7 +70,7 @@ export default function TrustUs() {
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
           >
-            {shuffledCompanies.map((company) => (
+            {companies.map((company) => (
               <motion.div
                 key={company.name}
                 className="relative group bg-white/50 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:bg-white"
@@ -104,28 +91,6 @@ export default function TrustUs() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-        
-        <div className="flex justify-center mt-16">
-          <button className="group px-8 py-4 rounded-full border border-[#243434] text-[#243434] hover:bg-[#243434] hover:text-white transition-all duration-300 flex items-center gap-2">
-            <span>Load more</span>
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition-transform duration-300 group-hover:rotate-90"
-            >
-              <path 
-                d="M12 4V20M12 20L18 14M12 20L6 14" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </section>

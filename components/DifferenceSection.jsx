@@ -144,12 +144,12 @@ export default function DifferenceSection() {
         </div>
 
         {/* Main content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div>
             {/* Left column empty */}
           </div>
           <div className="space-y-6">
-            <p className="text-2xl md:text-4xl font-helvetica reveal-type text-[#dcefd3] font-semibold whitespace-pre-line">
+            <p className="text-2xl md:text-4xl font-helvetica reveal-type text-[#dcefd3] font-medium whitespace-pre-line">
               At Addifico Consulting, we use human creativity and the latest technologies to help business leaders, investors, and entrepreneurs enhance their market positioning, discover the next winning trend, and optimize their chances for success.
             </p>
           </div>

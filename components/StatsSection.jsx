@@ -7,69 +7,96 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { value: '10K', label: 'Businesses analyzed' },
-  { value: '100+', label: 'Markets studied' },
-  { value: '$50M+', label: 'Raised' },
-  { value: '700+', label: 'Completed projects' },
-  { value: '500+', label: 'Clients' },
-  { value: '4.9/5', label: 'Average customer rating' }
+  { 
+    value: '10K', 
+    label: 'Businesses analyzed',
+    bgColor: 'bg-white',
+    gridArea: 'md:col-start-1 md:row-start-1',
+    className: 'md:-mt-8'
+  },
+  { 
+    value: '$50M+', 
+    label: 'Raised',
+    bgColor: 'bg-[#243434]',
+    gridArea: 'md:col-start-2 md:row-start-1',
+  },
+  { 
+    value: '500+', 
+    label: 'Clients',
+    bgColor: 'bg-[#a6e3a1]',
+    gridArea: 'md:col-start-3 md:row-start-1',
+    className: 'md:-mt-8'
+  },
+  { 
+    value: '100+', 
+    label: 'Markets studied',
+    bgColor: 'bg-[#a6e3a1]',
+    gridArea: 'md:col-start-1 md:row-start-2',
+    className: 'md:-mt-8'
+  },
+  { 
+    value: '700+', 
+    label: 'Completed projects',
+    bgColor: 'bg-white',
+    gridArea: 'md:col-start-2 md:row-start-2',
+  },
+  { 
+    value: '4.9/5', 
+    label: 'Average customer rating',
+    bgColor: 'bg-[#243434]',
+    gridArea: 'md:col-start-3 md:row-start-2',
+    className: 'md:-mt-8'
+  }
 ]
 
 export default function StatsSection() {
-  useEffect(() => {
-    const stats = gsap.utils.toArray('.stat-item')
-    gsap.from(stats, {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.stats-section',
-        start: 'top bottom',
-        end: 'center center',
-        scrub: 1
-      }
-    })
-  }, [])
-
   return (
-    <section className="py-16 md:min-h-screen flex flex-col justify-center px-4 md:px-20 bg-[#dcefd3] rounded-3xl">
-      <motion.h2 
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-6xl text-[#243434] mb-8 md:mb-16 font-helvetica font-bold"
-      >
-        Track Record
-      </motion.h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+    <section className="stats-section relative py-16 md:py-24 px-4 md:px-20 overflow-hidden">
+      {/* Rounded background blob */}
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 bg-[#dcefd3]/30 rounded-[3rem] transform -rotate-1" />
+      </div>
+
+      {/* Title */}
+      <div className="relative mb-12">
+        <h2 className="text-4xl md:text-6xl font-helvetica text-[#a6e3a1] font-bold">
+          Track Record
+        </h2>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="relative grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {stats.map((stat, index) => (
           <div
             key={stat.label}
-            className={`stat-item text-center p-4 md:p-8 rounded-lg shadow-lg ${
-              index % 2 === 0 ? 'bg-white' : 'bg-[#243434]'
-            }`}
+            className={`stat-item ${stat.bgColor} ${stat.gridArea} 
+              rounded-[2rem] relative overflow-hidden group
+              aspect-square md:aspect-auto md:h-[340px] 
+              p-4 md:p-8 ${stat.className || ''}`}
           >
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-              className={`text-2xl md:text-6xl font-bold ${
-                index % 2 === 0 ? 'text-[#243434]' : 'text-white'
-              }`}
-            >
-              {stat.value}
-            </motion.div>
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-              className={`text-sm md:text-base mt-2 ${
-                index % 2 === 0 ? 'text-gray-500' : 'text-gray-300'
-              }`}
-            >
-              {stat.label}
-            </motion.div>
+            <div className="h-full flex flex-col justify-end">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`text-2xl sm:text-3xl md:text-5xl font-bold ${
+                  stat.bgColor === 'bg-[#243434]' ? 'text-[#a6e3a1]' : 'text-[#243434]'
+                }`}
+              >
+                {stat.value}
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
+                className={`text-xs sm:text-sm md:text-base mt-1 md:mt-2 ${
+                  stat.bgColor === 'bg-[#243434]' ? 'text-gray-400' : 'text-gray-600'
+                }`}
+              >
+                {stat.label}
+              </motion.div>
+            </div>
           </div>
         ))}
       </div>

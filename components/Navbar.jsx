@@ -15,6 +15,17 @@ export default function Navbar() {
     }
   }, [isMenuOpen])
 
+  // Add these animation variants
+  const menuItemVariants = {
+    hover: i => ({
+      rotateX: [0, -90, 0],
+      transition: {
+        duration: 0.5,
+        delay: i * 0.05, // Creates the wave effect
+      },
+    }),
+  }
+
   return (
     <nav className="relative sticky top-0 w-full z-50 px-4 md:px-8 py-4 md:py-6 flex justify-between items-center">
       <div className="flex items-center gap-2">
@@ -38,9 +49,9 @@ export default function Navbar() {
         />
         
         <div 
-          className={`fixed w-[calc(100%-2rem)] md:w-[520px] h-[calc(100%-2rem)] right-4 top-4 bottom-4 bg-[#1E1E1E] transition-all duration-500 ease-in-out rounded-[36px] ${
+          className={`fixed w-[calc(100%-2rem)] md:w-[520px] h-[calc(100%-2rem)] right-4 top-4 bottom-4 transition-all duration-500 ease-in-out rounded-[36px] ${
             isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-[100%] opacity-0'
-          } pointer-events-auto overflow-y-auto`}
+          } pointer-events-auto overflow-y-auto bg-gradient-to-b from-[#1E2E2E] to-[#162121]`}
         >
           <div className="min-h-full flex flex-col p-8 md:p-12">
             {/* Close button */}
@@ -58,11 +69,34 @@ export default function Navbar() {
 
             {/* Menu Items */}
             <div className="flex flex-col gap-4 md:gap-6">
-              <a href="#" className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light">Services↗</a>
-              <a href="#" className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light">Resources↗</a>
-              <a href="#" className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light">Case studies↗</a>
-              <a href="#" className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light">About↗</a>
-              <a href="#" className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light">Contact↗</a>
+              {[
+                'Services↗',
+                'Resources↗',
+                'Case studies↗',
+                'About↗',
+                'Contact↗'
+              ].map((text, i) => (
+                <motion.a
+                  key={text}
+                  href="#"
+                  className="text-white hover:text-addifico-green text-[32px] md:text-[42px] font-light"
+                  custom={i}
+                  variants={menuItemVariants}
+                  whileHover="hover"
+                  style={{ transformOrigin: 'left' }}
+                >
+                  {text.split('').map((char, charIndex) => (
+                    <motion.span
+                      key={charIndex}
+                      custom={charIndex}
+                      variants={menuItemVariants}
+                      style={{ display: 'inline-block' }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.a>
+              ))}
             </div>
 
             {/* Social Links */}
@@ -76,10 +110,10 @@ export default function Navbar() {
       </div>
 
       {/* Desktop Menu Buttons */}
-      <div className="hidden md:flex items-center gap-8">
+      <div className={`hidden md:flex items-center gap-8 ${isMenuOpen ? 'invisible' : 'visible'}`}>
         <div className="relative w-12 h-12">
           <button 
-            className="absolute inset-0 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+            className="absolute inset-0 flex items-center justify-center hover:scale-110 transition-transform duration-200 z-10"
             onClick={() => setIsMenuOpen(true)}
           >
             <span className="text-addifico-green text-xl">☰</span>
@@ -119,7 +153,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="relative md:hidden w-10 h-10">
+      <div className={`relative md:hidden w-10 h-10 ${isMenuOpen ? 'invisible' : 'visible'}`}>
         <button 
           className="absolute inset-0 flex items-center justify-center rounded-full"
           onClick={() => setIsMenuOpen(!isMenuOpen)}

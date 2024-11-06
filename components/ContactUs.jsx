@@ -3,14 +3,14 @@ import { motion } from 'framer-motion'
 
 export default function ContactUs() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Contact Form - Now appears first on mobile */}
-      <div className="bg-[#243434] rounded-[2rem] p-8 md:p-12 order-1 md:order-2">
-        <h2 className="text-4xl md:text-5xl text-[#dcefd3] font-helvetica mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      {/* Contact Form */}
+      <div className="bg-[#243434] rounded-[2rem] p-8 order-1 md:order-2 h-full">
+        <h2 className="text-4xl md:text-4xl text-[#dcefd3] font-helvetica mb-6">
           Interested but don't know where to start?
         </h2>
 
-        <form className="space-y-6">
+        <form className="space-y-5">
           {/* Name and Email Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
@@ -67,7 +67,7 @@ export default function ContactUs() {
         </form>
 
         {/* Email Contact */}
-        <div className="mt-8">
+        <div className="mt-6">
           <p className="text-[#dcefd3]/60 mb-2">Or email us at:</p>
           <div className="flex items-center gap-2 text-[#dcefd3]">
             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -78,8 +78,8 @@ export default function ContactUs() {
         </div>
       </div>
 
-      {/* Links Grid - Now appears second on mobile */}
-      <div className="grid grid-cols-2 gap-3 md:gap-4 h-fit order-2 md:order-1">
+      {/* Links Grid */}
+      <div className="grid grid-cols-2 gap-4 md:gap-6 order-2 md:order-1 h-full">
         {/* UpWork Link */}
         <motion.a
           href="https://upwork.com"
@@ -89,16 +89,16 @@ export default function ContactUs() {
           whileHover="hover"
         >
           {/* Logo with Circle */}
-          <div className="absolute top-3 md:top-4 left-3 md:left-4">
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
-              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-xl md:text-2xl">up</span>
+          <div className="absolute top-4 left-4">
+            <div className="w-10 h-10 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
+              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-lg">up</span>
             </div>
           </div>
 
           {/* Text and Arrow Container */}
-          <div className="absolute bottom-3 md:bottom-8 left-3 md:left-8">
+          <div className="absolute bottom-4 left-4">
             <motion.div
-              className="flex items-center gap-2 md:gap-4"
+              className="flex items-center gap-2"
               initial={{ x: 0 }}
               variants={{
                 hover: { x: 28 }
@@ -129,7 +129,7 @@ export default function ContactUs() {
                   />
                 </svg>
               </motion.div>
-              <span className="text-[#dcefd3] text-xl md:text-3xl font-helvetica">UpWork</span>
+              <span className="text-[#dcefd3] text-xl font-helvetica">UpWork</span>
             </motion.div>
           </div>
         </motion.a>
@@ -142,14 +142,14 @@ export default function ContactUs() {
           className="relative bg-[#243434] rounded-[2rem] aspect-square overflow-hidden group cursor-pointer"
           whileHover="hover"
         >
-          <div className="absolute top-3 md:top-4 left-3 md:left-4">
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
-              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-xl md:text-2xl">fi</span>
+          <div className="absolute top-4 left-4">
+            <div className="w-10 h-10 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
+              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-lg">fi</span>
             </div>
           </div>
-          <div className="absolute bottom-3 md:bottom-8 left-3 md:left-8">
+          <div className="absolute bottom-4 left-4">
             <motion.div
-              className="flex items-center gap-2 md:gap-4"
+              className="flex items-center gap-2"
               initial={{ x: 0 }}
               variants={{
                 hover: { x: 28 }
@@ -180,7 +180,7 @@ export default function ContactUs() {
                   />
                 </svg>
               </motion.div>
-              <span className="text-[#dcefd3] text-xl md:text-3xl font-helvetica">Fiverr</span>
+              <span className="text-[#dcefd3] text-xl font-helvetica">Fiverr</span>
             </motion.div>
           </div>
         </motion.a>
@@ -193,14 +193,14 @@ export default function ContactUs() {
           className="relative bg-[#243434] rounded-[2rem] aspect-square overflow-hidden group cursor-pointer"
           whileHover="hover"
         >
-          <div className="absolute top-3 md:top-4 left-3 md:left-4">
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
-              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-xl md:text-2xl">in</span>
+          <div className="absolute top-4 left-4">
+            <div className="w-10 h-10 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
+              <span className="text-[#dcefd3]/60 group-hover:text-[#243434] group-hover:font-bold transition-all duration-300 text-lg">in</span>
             </div>
           </div>
-          <div className="absolute bottom-3 md:bottom-8 left-3 md:left-8">
+          <div className="absolute bottom-4 left-4">
             <motion.div
-              className="flex items-center gap-2 md:gap-4"
+              className="flex items-center gap-2"
               initial={{ x: 0 }}
               variants={{
                 hover: { x: 28 }
@@ -231,7 +231,7 @@ export default function ContactUs() {
                   />
                 </svg>
               </motion.div>
-              <span className="text-[#dcefd3] text-xl md:text-3xl font-helvetica">LinkedIn</span>
+              <span className="text-[#dcefd3] text-xl font-helvetica">LinkedIn</span>
             </motion.div>
           </div>
         </motion.a>
@@ -242,8 +242,8 @@ export default function ContactUs() {
           className="relative bg-[#243434] rounded-[2rem] aspect-square overflow-hidden group cursor-pointer"
           whileHover="hover"
         >
-          <div className="absolute top-3 md:top-4 left-3 md:left-4">
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
+          <div className="absolute top-4 left-4">
+            <div className="w-10 h-10 rounded-full bg-[#dcefd3]/10 group-hover:bg-[#97D28B] transition-colors duration-300 flex items-center justify-center">
               <svg 
                 className="w-6 h-6 text-[#dcefd3]/60 group-hover:text-[#243434] transition-colors duration-300" 
                 viewBox="0 0 24 24" 
@@ -259,9 +259,9 @@ export default function ContactUs() {
               </svg>
             </div>
           </div>
-          <div className="absolute bottom-3 md:bottom-8 left-3 md:left-8">
+          <div className="absolute bottom-4 left-4">
             <motion.div
-              className="flex items-center gap-2 md:gap-4"
+              className="flex items-center gap-2"
               initial={{ x: 0 }}
               variants={{
                 hover: { x: 28 }
@@ -292,7 +292,7 @@ export default function ContactUs() {
                   />
                 </svg>
               </motion.div>
-              <span className="text-[#dcefd3] text-xl md:text-3xl font-helvetica">Book a meeting</span>
+              <span className="text-[#dcefd3] text-xl font-helvetica">Book a meeting</span>
             </motion.div>
           </div>
         </motion.a>

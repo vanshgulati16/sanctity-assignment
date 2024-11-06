@@ -26,7 +26,25 @@ const services = [
         icon: '🎯',
         title: 'Competitive Analysis',
         description: 'Stay ahead of competition with detailed market intelligence.'
-    }
+    },
+    {
+      id: 5,
+      icon: '🎯',
+      title: 'Competitive Analysis',
+      description: 'Stay ahead of competition with detailed market intelligence.'
+  },
+  {
+    id: 6,
+    icon: '🎯',
+    title: 'Competitive Analysis',
+    description: 'Stay ahead of competition with detailed market intelligence.'
+},
+{
+  id: 7,
+  icon: '🎯',
+  title: 'Competitive Analysis',
+  description: 'Stay ahead of competition with detailed market intelligence.'
+},
 ]
 
 const HorizontalScrollCarousel = () => {
@@ -35,16 +53,16 @@ const HorizontalScrollCarousel = () => {
       target: targetRef,
     });
   
-    const x = useTransform(scrollYProgress, [0, 1], ["70%", "-95%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["30%", "-95%"]);
   
     return (
-      <section ref={targetRef} className="relative md:h-[300vh] px-4 md:px-20">
-        {/* Mobile View (Vertical Layout) */}
-        <div className="md:hidden py-20">
-          <h2 className="text-5xl text-[#a6e3a1] font-helvetica font-bold mb-8">
+      <section ref={targetRef} className="relative lg:h-[200vh] px-4 md:px-20">
+        {/* Mobile and Tablet View (Vertical Grid Layout) */}
+        <div className="lg:hidden py-20">
+          <h2 className="text-5xl md:text-7xl text-[#a6e3a1] font-helvetica font-bold mb-8">
             Services
           </h2>
-          <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {services.map((service) => (
               <Card card={service} key={service.id} />
             ))}
@@ -52,7 +70,7 @@ const HorizontalScrollCarousel = () => {
         </div>
 
         {/* Desktop View (Horizontal Scroll) */}
-        <div className="hidden md:block sticky top-0 h-screen items-start overflow-hidden pt-20">
+        <div className="hidden lg:block sticky top-0 h-screen items-start overflow-hidden pt-40">
           <div className="flex flex-col w-full">
             <h2 className="text-8xl text-[#a6e3a1] font-helvetica font-bold px-20 mt-8 mb-4">
               Services

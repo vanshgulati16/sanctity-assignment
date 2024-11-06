@@ -72,7 +72,7 @@ const AccordionItem = ({ title, content }) => {
   
     return (
       <section className="w-full flex flex-col md:flex-row justify-around py-20">
-        <h2 className="text-4xl md:text-6xl text-[#dcefd3] mb-8 md:mb-0 font-helvetica font-light md:pr-24">
+        <h2 className="text-4xl md:text-2xl text-[#dcefd3] mb-8 md:mb-0 font-helvetica font-light md:pr-24">
           Why us?
         </h2>
         <div className="space-y-4 w-full md:w-1/2">

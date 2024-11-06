@@ -7,8 +7,30 @@ import gsap from 'gsap'
 export default function HeroSection() {
   const makeATextRef = useRef(null)
   const differenceTextRef = useRef(null)
+  const mobileTextRef = useRef(null)
 
   useEffect(() => {
+    gsap.to(mobileTextRef.current, {
+      scrollTrigger: {
+        trigger: ".difference-section",
+        start: "top 80%",
+        end: "top 20%",
+        scrub: 1,
+        onEnter: () => {
+          gsap.to(mobileTextRef.current, {
+            opacity: 0,
+            duration: 0.3
+          })
+        },
+        onLeaveBack: () => {
+          gsap.to(mobileTextRef.current, {
+            opacity: 1,
+            duration: 0.3
+          })
+        }
+      }
+    })
+
     gsap.to([makeATextRef.current, differenceTextRef.current], {
       scrollTrigger: {
         trigger: ".difference-section",
@@ -48,11 +70,11 @@ export default function HeroSection() {
             <h1 className="text-[#dcefd3] text-[40px] font-helvetica leading-tight">
               Insights that
             </h1>
-            <div className="flex flex-col gap-2">
-              <span ref={makeATextRef} className="hero-make-a text-addifico-green text-[40px]">
+            <div ref={mobileTextRef} className="flex flex-col gap-2">
+              <span className="text-addifico-green text-[40px]">
                 Make a
               </span>
-              <span ref={differenceTextRef} className="hero-difference text-addifico-green text-[40px]">
+              <span className="text-addifico-green text-[40px]">
                 Difference
               </span>
             </div>
