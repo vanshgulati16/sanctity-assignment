@@ -84,12 +84,12 @@ export default function HeroSection() {
 
       {/* Desktop view container */}
       <div className="hidden sm:block h-full">
-        <div className="flex flex-col justify-center h-full px-[120px]">
+        <div className="flex flex-col justify-center h-full px-4 md:px-8 lg:px-[120px]">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-gray-400 mb-16 font-helvetica text-base text-center"
+            className="text-gray-400 mb-8 md:mb-16 font-helvetica text-base text-center"
           >
             Competitive Edge through Creativity & Technology
           </motion.div>
@@ -100,14 +100,16 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <h1 className="text-[#dcefd3] text-[80px] font-helvetica leading-none">
+            {/* Market Insights row */}
+            <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 flex-nowrap whitespace-nowrap">
+              <h1 className="text-[#dcefd3] text-[40px] md:text-[60px] lg:text-[80px] font-helvetica leading-none">
                 Market Insights
               </h1>
+              
               {/* Asterisk container */}
-              <div className="relative group cursor-pointer">
-                <div className="w-36 h-16 bg-[#243434] rounded-full flex items-center justify-center">
-                  <span className="text-4xl text-[#dcefd3]">*</span>
+              <div className="relative group cursor-pointer flex-shrink-0">
+                <div className="w-20 h-10 md:w-28 md:h-12 lg:w-36 lg:h-16 bg-[#243434] rounded-full flex items-center justify-center">
+                  <span className="text-2xl md:text-3xl lg:text-4xl text-[#dcefd3]">*</span>
                 </div>
                 
                 {/* Full-screen overlay */}
@@ -124,31 +126,32 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-6">
-              <h1 className="text-[#dcefd3] text-[80px] font-helvetica leading-none">
+            {/* Rest of the content */}
+            <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-6">
+              <h1 className="text-[#dcefd3] text-[40px] md:text-[60px] lg:text-[80px] font-helvetica leading-none">
                 that
               </h1>
               
-              <div className="relative">
+              <div className="relative flex-shrink-0">
                 <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-3xl -z-10" />
                 <Image 
                   src="https://cdn.prod.website-files.com/63793925c7db23ce040b0824/64f5c38109cfeef5f12e09ae_Image.jpg"
                   alt="Building" 
                   width={160}
                   height={100}
-                  className="w-[160px] h-[100px] rounded-2xl object-cover"
+                  className="w-[120px] h-[75px] md:w-[140px] md:h-[87px] lg:w-[160px] lg:h-[100px] rounded-2xl object-cover"
                 />
               </div>
 
               <div>
-                <span ref={makeATextRef} className="hero-make-a text-addifico-green text-[80px] font-helvetica leading-none">
+                <span ref={makeATextRef} className="hero-make-a text-addifico-green text-[40px] md:text-[60px] lg:text-[80px] font-helvetica leading-none">
                   Make a
                 </span>
               </div>
             </div>
 
             <div className="text-center">
-              <span ref={differenceTextRef} className="hero-difference text-addifico-green text-[80px] font-helvetica leading-none">
+              <span ref={differenceTextRef} className="hero-difference text-addifico-green text-[40px] md:text-[60px] lg:text-[80px] font-helvetica leading-none">
                 Difference
               </span>
             </div>

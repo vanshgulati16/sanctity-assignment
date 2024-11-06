@@ -133,8 +133,8 @@ export default function TestimonialSection() {
               </svg>
             </button>
 
-            {/* Stacked Cards Container */}
-            <div className="relative h-[450px] w-full max-w-[400px]">
+            {/* Stacked Cards Container - Updated width classes */}
+            <div className="relative h-[450px] w-full max-w-[350px] md:max-w-[600px] lg:max-w-[400px]">
               {filteredTestimonials.map((testimonial, index) => {
                 const isActive = index === currentIndex
                 const offset = (index - currentIndex)
@@ -158,7 +158,7 @@ export default function TestimonialSection() {
                       duration: 0.4,
                       ease: [0.4, 0.0, 0.2, 1],
                     }}
-                    className="absolute inset-0 bg-white rounded-3xl p-6 lg:p-10"
+                    className="absolute inset-0 bg-white rounded-3xl p-6 md:p-8 lg:p-10"
                     style={{
                       backfaceVisibility: 'hidden',
                       WebkitBackfaceVisibility: 'hidden',
