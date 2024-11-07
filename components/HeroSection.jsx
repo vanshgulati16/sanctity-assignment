@@ -126,7 +126,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Rest of the content */}
+            {/* Content */}
             <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-6">
               <h1 className="text-[#dcefd3] text-[40px] md:text-[60px] lg:text-[80px] font-helvetica leading-none">
                 that
@@ -159,7 +159,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Common background elements */}
+      {/* background elements */}
       <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-3xl box-border -z-10"/>
       <div className="absolute inset-0 bg-gradient-to-br from-addifico-green/20 to-transparent opacity-30 -z-10" />
     </motion.section>

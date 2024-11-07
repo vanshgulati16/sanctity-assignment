@@ -8,7 +8,6 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         {/* Top section with navigation links */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-          {/* Left navigation links */}
           <nav className="flex gap-4 mb-4 md:mb-0">
             <Link 
               href="/services" 
@@ -39,7 +38,6 @@ export default function Footer() {
             </Link>
           </nav>
 
-          {/* Right social links */}
           <nav className="flex gap-4">
             <Link 
               href="https://twitter.com" 
@@ -70,7 +68,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Bottom section with credits and copyright */}
+        {/* credits and copyright */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-[#dcefd3]/10">
           <div className="flex items-center gap-2 mb-4 md:mb-0">
             <span className="text-[#dcefd3]/50">Design and development by</span>

@@ -34,8 +34,9 @@ const resources = [
 
 export default function Resources() {
   return (
-    <div className="px-4 py-8">        
-        {/* Main Content with White Background */}
+    <section className="min-h-screen flex flex-col justify-center items-center py-20">
+      <div className="px-4 py-8">        
+          {/* Main Content */}
         <div className="relative mx-auto rounded-[2.5rem] bg-white backdrop-blur-sm overflow-hidden">
           <div className="max-w-[1440px] mx-auto py-16 px-4">
             {/* Header with View All */}
@@ -67,7 +68,6 @@ export default function Resources() {
                 >
                   {/* Card */}
                   <div className="bg-white rounded-3xl overflow-hidden transition-transform duration-300 group-hover:scale-[0.98] shadow-sm">
-                    {/* Image */}
                     <div className="relative h-64 overflow-hidden">
                       <Image
                         src={resource.image}
@@ -83,7 +83,6 @@ export default function Resources() {
 
                     {/* Content */}
                     <div className="p-6">
-                      {/* Category and Date */}
                       <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
                         <span>{resource.category}</span>
                         <span>{resource.date}</span>
@@ -154,6 +153,7 @@ export default function Resources() {
             </div>
           </div>
         </div>
-    </div>
+      </div>
+    </section>
   )
 } 

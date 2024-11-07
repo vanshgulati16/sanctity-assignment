@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 
 export default function ContactUs() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-      {/* Contact Form */}
+    <section className="min-h-screen flex flex-col justify-center items-center py-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        {/* Contact Form */}
       <div className="bg-[#243434] rounded-[2rem] p-8 order-1 md:order-2 h-full">
         <h2 className="text-4xl md:text-4xl text-[#dcefd3] font-helvetica mb-6">
           Interested but don't know where to start?
@@ -185,7 +186,7 @@ export default function ContactUs() {
           </div>
         </motion.a>
 
-        {/* LinkedIn Link */}
+        {/* Linkedin Link */}
         <motion.a
           href="https://linkedin.com"
           target="_blank"
@@ -297,6 +298,7 @@ export default function ContactUs() {
           </div>
         </motion.a>
       </div>
-    </div>
+      </div>
+    </section>
   )
 } 

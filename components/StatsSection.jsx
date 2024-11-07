@@ -52,12 +52,11 @@ const stats = [
 export default function StatsSection() {
   return (
     <section className="stats-section relative py-16 md:py-24 px-4 md:px-20 overflow-hidden">
-      {/* Rounded background blob */}
+      {/*  background  */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-[#dcefd3]/30 rounded-[3rem] transform -rotate-1" />
       </div>
 
-      {/* Title */}
       <div className="relative mb-12">
         <h2 className="text-4xl md:text-6xl font-helvetica text-[#a6e3a1] font-bold">
           Track Record

@@ -71,14 +71,16 @@ const AccordionItem = ({ title, content }) => {
     ];
   
     return (
-      <section className="w-full flex flex-col md:flex-row justify-around py-20">
-        <h2 className="text-4xl md:text-2xl text-[#dcefd3] mb-8 md:mb-0 font-helvetica font-light md:pr-24">
+      <section className="min-h-screen flex flex-col justify-center md:px-20 py-20">
+        <div className="w-full flex flex-col md:flex-row justify-around py-20">
+          <h2 className="text-4xl md:text-2xl text-[#dcefd3] mb-8 md:mb-0 font-helvetica font-light md:pr-24">
           Why us?
         </h2>
         <div className="space-y-4 w-full md:w-1/2">
           {items.map((item, index) => (
             <AccordionItem key={index} title={item.title} content={item.content} />
           ))}
+          </div>
         </div>
       </section>
     );

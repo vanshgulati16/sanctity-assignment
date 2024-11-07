@@ -13,9 +13,7 @@ export default function DifferenceSection() {
   useEffect(() => {
     // Get the position of both texts from hero section
     const heroMakeAText = document.querySelector('.hero-make-a')
-    const heroDifferenceText = document.querySelector('.hero-difference')
     const heroMakeARect = heroMakeAText?.getBoundingClientRect()
-    const heroDifferenceRect = heroDifferenceText?.getBoundingClientRect()
 
     // Initial position setup
     gsap.set(titleRef.current, {
@@ -136,17 +134,14 @@ export default function DifferenceSection() {
       
       {/* Content */}
       <div className="relative z-10 mt-20">
-        {/* Why we exist? text */}
         <div className="mb-12">
           <div className="text-gray-400 text-xl font-helvetica font-semibold">
             Why we exist? 
           </div>
         </div>
 
-        {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div>
-            {/* Left column empty */}
           </div>
           <div className="space-y-6">
             <p className="text-2xl md:text-4xl font-helvetica reveal-type text-[#dcefd3] font-medium whitespace-pre-line">

@@ -15,7 +15,7 @@ export default function Navbar() {
     }
   }, [isMenuOpen])
 
-  // Add these animation variants
+
   const menuItemVariants = {
     hover: i => ({
       rotateX: [0, -90, 0],
@@ -67,7 +67,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Menu Items */}
             <div className="flex flex-col gap-4 md:gap-6">
               {[
                 'Services↗',
@@ -99,7 +98,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Social Links */}
             <div className="flex flex-col gap-3 md:gap-4 mt-auto pt-8 md:pt-12">
               <a href="#" className="text-gray-400 hover:text-white text-lg md:text-xl">UpWork</a>
               <a href="#" className="text-gray-400 hover:text-white text-lg md:text-xl">Fiverr</a>

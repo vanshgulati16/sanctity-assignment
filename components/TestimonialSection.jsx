@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const testimonials = [
   {
@@ -80,14 +80,14 @@ export default function TestimonialSection() {
   }, [activeFilter])
 
   return (
-    <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto px-4 py-8 overflow-x-hidden">
-      {/* Title and Platform Toggle Section */}
+    <section className="min-h-screen flex flex-col justify-center items-center px-4 md:px-20 py-20">
+      <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto px-4 py-8 overflow-x-hidden">
       <div className="w-full lg:w-1/3 lg:sticky lg:top-8 lg:self-start">
         <h2 className="text-3xl lg:text-6xl text-addifico-green font-helvetica font-bold lg:pr-24">
           Hear it from our clients
         </h2>
         
-        {/* Platform Toggle */}
+        {/* Toggle */}
         <div className="mt-8 inline-flex p-1 bg-addifico-green/10 rounded-full">
           <button
             onClick={() => setActiveFilter('fiverr')}
@@ -115,9 +115,8 @@ export default function TestimonialSection() {
       {/* Testimonials Container */}
       <div className="w-full lg:w-2/3">
         <div className="flex flex-col items-center justify-center gap-8">
-          {/* Navigation and Cards Container */}
           <div className="flex items-center justify-center gap-4 w-full">
-            {/* Left Navigation Button */}
+            {/* Left Button */}
             <button
               onClick={handlePrev}
               className={`flex-shrink-0 p-2 lg:p-4 rounded-full transition-colors z-10
@@ -133,7 +132,7 @@ export default function TestimonialSection() {
               </svg>
             </button>
 
-            {/* Stacked Cards Container - Updated width classes */}
+            {/* Stacked Cards*/}
             <div className="relative h-[450px] w-full max-w-[350px] md:max-w-[600px] lg:max-w-[400px]">
               {filteredTestimonials.map((testimonial, index) => {
                 const isActive = index === currentIndex
@@ -210,7 +209,7 @@ export default function TestimonialSection() {
               })}
             </div>
 
-            {/* Right Navigation Button */}
+            {/* Right Button */}
             <button
               onClick={handleNext}
               className={`flex-shrink-0 p-2 lg:p-4 rounded-full transition-colors z-10
@@ -228,6 +227,7 @@ export default function TestimonialSection() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </section>
   )
 } 
